@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Công ty | HUTECH Intern</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/depth-theme.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -40,6 +41,7 @@
   </div>
 
   <script src="../css/js/data.js"></script>
+  <script src="../css/js/common.js?v=2"></script>
   <script>
     document.getElementById('company-list').innerHTML = DOANH_NGHIEP.map(dn => {
       const tinh = TINH_THANH.find(t => t.MaTinhThanh === dn.MaTinhThanh);
@@ -51,11 +53,12 @@
           <p><i class="fas fa-map-marker-alt"></i> ${tinh ? tinh.TenTinhThanh : ''}</p>
           <p><i class="fas fa-users"></i> Quy mô: ${dn.QuyMo}</p>
           <p class="so-tin">${soTin} tin đang tuyển</p>
-          <a href="viec-lam.html" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:12px;">Xem việc làm</a>
+          <a href="viec-lam.html?company=${dn.MaDoanhNghiep}" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:12px;">Xem việc làm</a>
         </div>
       `;
     }).join('');
   </script>
+  <script src="../css/js/portal.js?v=2"></script>
   <style>
     .company-grid {
       display: grid;

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat hỗ trợ | HUTECH Intern</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/depth-theme.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -26,34 +27,68 @@
   <div class="page-header">
     <div class="container">
       <h1>Chat hỗ trợ</h1>
-      <p>Liên hệ với đội ngũ hỗ trợ nhanh chóng</p>
+      <p id="chat-role-description">Trợ lý sẽ hỗ trợ theo đúng vai trò tài khoản của bạn</p>
     </div>
   </div>
 
   <div class="container" style="padding:24px 16px; max-width: 900px;">
     <div class="chat-box">
-      <div class="chat-message support"><strong>Hỗ trợ TopCV</strong><br>Chào bạn, bạn cần hỗ trợ gì?</div>
-      <div class="chat-message user">Tôi muốn chỉnh sửa hồ sơ và theo dõi đơn ứng tuyển.</div>
-      <div class="chat-message support">Bạn có thể cập nhật hồ sơ trong mục Hồ sơ và xem tình trạng đơn trong mục Ứng tuyển.</div>
-      <div class="chat-input-wrap">
-        <input type="text" class="form-control" placeholder="Nhập tin nhắn...">
-        <button class="btn btn-primary">Gửi</button>
+      <div class="chat-header">
+        <span class="chat-avatar"><i class="fas fa-headset"></i></span>
+        <div><strong id="chat-contact-name">Đang tải cuộc trò chuyện...</strong><span id="chat-role-label">Tin nhắn khách hàng</span></div>
+        <span class="chat-online" id="chat-status"><i class="fas fa-circle"></i> Hội thoại riêng</span>
       </div>
+      <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+      <div class="chat-suggestions" id="chat-suggestions" aria-label="Câu hỏi gợi ý"></div>
+      <form class="chat-input-wrap">
+        <input type="text" class="form-control" placeholder="Nhập tin nhắn..." aria-label="Nhập tin nhắn" autocomplete="off">
+        <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i> Gửi</button>
+      </form>
     </div>
   </div>
 
   <style>
     .chat-box {
       background: white; border: 1px solid var(--border); border-radius: 20px;
-      padding: 24px; box-shadow: var(--shadow);
+      padding: 0; box-shadow: var(--shadow); overflow: hidden;
     }
+    .chat-header { display:flex; align-items:center; gap:12px; padding:16px 20px; border-bottom:1px solid var(--border); background:rgba(255,255,255,.82); }
+    .chat-avatar { width:42px; height:42px; display:grid; place-items:center; border-radius:14px; color:#fff; background:linear-gradient(135deg,#36c7e6,#5c5ee9 58%,#9549dc); box-shadow:0 6px 15px rgba(83,83,214,.22); }
+    .chat-header > div { display:grid; gap:2px; }
+    .chat-header > div strong { color:#25365f; font-size:14px; }
+    .chat-header > div span { color:var(--text-muted); font-size:12px; }
+    .chat-online { margin-left:auto; color:#476895; font-size:12px; white-space:nowrap; }
+    .chat-online i { color:#22b980; font-size:8px; margin-right:4px; }
+    .chat-contact-picker { margin-left:auto; max-width:220px; }
+    .chat-contact-picker .form-control { padding:8px 10px; font-size:12px; }
+    .chat-empty { align-self:center; max-width:480px; margin:auto; padding:24px; color:var(--text-muted); text-align:center; }
+    .chat-messages { display:flex; flex-direction:column; gap:12px; min-height:300px; max-height:min(58vh,560px); overflow-y:auto; padding:20px; scroll-behavior:smooth; }
     .chat-message {
-      max-width: 75%; padding: 12px 14px; border-radius: 16px; margin-bottom: 12px; font-size: 14px;
-      line-height: 1.6;
+      max-width: min(78%, 640px); padding: 11px 14px; border-radius: 16px; margin:0; font-size:14px;
+      line-height:1.6; overflow-wrap:anywhere; white-space:pre-wrap;
     }
-    .chat-message.support { background: #f3f4f6; color: #1f2937; }
-    .chat-message.user { margin-left: auto; background: var(--primary); color: white; }
-    .chat-input-wrap { display: flex; gap: 10px; margin-top: 20px; }
+    .chat-message.support { align-self:flex-start; background:#edf0ff; color:#293858; border-bottom-left-radius:5px; }
+    .chat-message.user { align-self:flex-end; background:linear-gradient(130deg,#36c7e6,#5c5ee9 58%,#9549dc); color:white; border-bottom-right-radius:5px; }
+    .chat-message-author { display:block; margin-bottom:4px; font-size:11px; font-weight:700; opacity:.82; }
+    .chat-message-time { display:block; margin-top:5px; font-size:10px; opacity:.7; text-align:right; }
+    .chat-suggestions { display:flex; flex-wrap:wrap; gap:8px; padding:0 20px 14px; }
+    .chat-suggestion { border:1px solid #d5dcf5; border-radius:999px; padding:7px 12px; color:#5146ce; background:#f6f7ff; font-size:12px; cursor:pointer; transition:.2s; }
+    .chat-suggestion:hover { border-color:#8174ed; background:#eeecff; }
+    .chat-input-wrap { display:flex; gap:10px; margin:0; padding:16px 20px 20px; border-top:1px solid var(--border); }
+    .chat-input-wrap .form-control { min-width:0; }
+    .chat-input-wrap button { flex-shrink:0; }
+    @media(max-width:600px) {
+      .chat-messages { min-height:280px; max-height:58vh; padding:14px; }
+      .chat-message { max-width:90%; }
+      .chat-header { padding:14px; }
+      .chat-online { font-size:0; }
+      .chat-online i { font-size:10px; }
+      .chat-input-wrap { padding:12px 14px 14px; }
+      .chat-suggestions { padding:0 14px 12px; }
+    }
   </style>
+  <script src="../css/js/data.js"></script>
+  <script src="../css/js/common.js?v=2"></script>
+  <script src="../css/js/portal.js?v=2"></script>
 </body>
 </html>

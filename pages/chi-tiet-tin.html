@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chi tiết tin tuyển dụng | HUTECH Intern</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/depth-theme.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -30,31 +31,32 @@
   <div class="container" style="padding:24px 16px;" id="detail-container"></div>
 
   <script src="../css/js/data.js"></script>
-  <script src="../css/js/common.js"></script>
+  <script src="../css/js/common.js?v=2"></script>
   <script>
     const id = +(getQueryParam('id') || 1);
-    const job = TIN_TUYEN_DUNG.find(j => j.MaTin === id) || TIN_TUYEN_DUNG[0];
+    const job = getAllPortalJobs().find(j => j.MaTin === id) || TIN_TUYEN_DUNG[0];
+    const isSaved = getSavedJobIds().includes(job.MaTin);
 
     document.getElementById('detail-container').innerHTML = `
       <div class="detail-layout">
         <div class="detail-main">
           <div class="detail-header">
-            <img src="${job.LinkLogo}" class="job-logo" style="width:72px;height:72px;" alt="">
+            <img src="${escapeHTML(job.LinkLogo)}" class="job-logo" style="width:72px;height:72px;" alt="${escapeHTML(job.TenDoanhNghiep)}">
             <div>
-              <h1>${job.TieuDe}</h1>
-              <p class="company-name">${job.TenDoanhNghiep}</p>
+              <h1>${escapeHTML(job.TieuDe)}</h1>
+              <p class="company-name">${escapeHTML(job.TenDoanhNghiep)}</p>
               <div class="job-meta" style="margin-top:8px;">
-                <span class="salary"><i class="fas fa-money-bill-wave"></i> ${job.CoLuong ? job.MucHoTro : 'Không lương'}</span>
-                <span><i class="fas fa-map-marker-alt"></i> ${job.TenTinhThanh}</span>
-                <span><i class="fas fa-clock"></i> ${job.ThoiGianThang} tháng</span>
-                <span><i class="fas fa-laptop-house"></i> ${HINH_THUC[job.HinhThucLamViec]}</span>
+                <span class="salary"><i class="fas fa-money-bill-wave"></i> ${escapeHTML(job.CoLuong ? job.MucHoTro : 'Không lương')}</span>
+                <span><i class="fas fa-map-marker-alt"></i> ${escapeHTML(job.TenTinhThanh)}</span>
+                <span><i class="fas fa-clock"></i> ${escapeHTML(job.ThoiGianThang)} tháng</span>
+                <span><i class="fas fa-laptop-house"></i> ${escapeHTML(HINH_THUC[job.HinhThucLamViec] || job.HinhThucLamViec)}</span>
               </div>
             </div>
           </div>
 
           <div class="detail-section">
             <h3>Mô tả công việc</h3>
-            <p>Chúng tôi đang tìm kiếm sinh viên thực tập vị trí <strong>${job.TieuDe}</strong> để tham gia các dự án thực tế. Bạn sẽ được mentorship bởi senior và làm việc trong môi trường chuyên nghiệp.</p>
+            <p>Chúng tôi đang tìm kiếm sinh viên thực tập vị trí <strong>${escapeHTML(job.TieuDe)}</strong> để tham gia các dự án thực tế. Bạn sẽ được mentorship bởi senior và làm việc trong môi trường chuyên nghiệp.</p>
             <ul>
               <li>Tham gia phát triển tính năng mới</li>
               <li>Code review và học hỏi quy trình Agile</li>
@@ -66,7 +68,7 @@
             <h3>Yêu cầu</h3>
             <ul>
               <li>Sinh viên năm 3-4 Khoa CNTT HUTECH</li>
-              <li>Nắm vững các kỹ năng: ${job.KyNang.join(', ')}</li>
+              <li>Nắm vững các kỹ năng: ${job.KyNang.map(escapeHTML).join(', ')}</li>
               <li>Có tinh thần học hỏi, trách nhiệm</li>
               <li>GPA từ 2.8 trở lên là lợi thế</li>
             </ul>
@@ -75,7 +77,7 @@
           <div class="detail-section">
             <h3>Quyền lợi</h3>
             <ul>
-              <li>${job.CoLuong ? 'Hỗ trợ: ' + job.MucHoTro + '/tháng' : 'Không hỗ trợ lương nhưng có mentorship'}</li>
+              <li>${escapeHTML(job.CoLuong ? 'Hỗ trợ: ' + job.MucHoTro + '/tháng' : 'Không hỗ trợ lương nhưng có mentorship')}</li>
               <li>Certificate sau khi hoàn thành</li>
               <li>Cơ hội trở thành nhân viên chính thức</li>
               <li>Môi trường trẻ, năng động</li>
@@ -85,33 +87,34 @@
           <div class="detail-section">
             <h3>Kỹ năng yêu cầu</h3>
             <div class="skill-tags">
-              ${job.KyNang.map(k => `<span class="skill-tag">${k}</span>`).join('')}
+              ${job.KyNang.map(k => `<span class="skill-tag">${escapeHTML(k)}</span>`).join('')}
             </div>
           </div>
         </div>
 
         <aside class="detail-sidebar">
           <div class="apply-box">
-            <p><i class="fas fa-users"></i> Số lượng: <strong>${job.SoLuong}</strong></p>
-            <p><i class="far fa-calendar-times"></i> Hạn nộp: <strong>${formatDate(job.HanNop)}</strong></p>
-            <p><i class="fas fa-eye"></i> Lượt xem: <strong>${job.LuotXem}</strong></p>
-            <button class="btn btn-primary" style="width:100%;margin-top:16px;" onclick="alert('Mở modal nộp đơn (gọi sp_UngTuyen)')">
+            <p><i class="fas fa-users"></i> Số lượng: <strong>${Number(job.SoLuong)}</strong></p>
+            <p><i class="far fa-calendar-times"></i> Hạn nộp: <strong>${escapeHTML(formatDate(job.HanNop))}</strong></p>
+            <p><i class="fas fa-eye"></i> Lượt xem: <strong>${Number(job.LuotXem)}</strong></p>
+            <button id="applyJobBtn" data-job-id="${Number(job.MaTin)}" class="btn btn-primary" style="width:100%;margin-top:16px;">
               <i class="fas fa-paper-plane"></i> Ứng tuyển ngay
             </button>
-            <button class="btn btn-outline" style="width:100%;margin-top:8px;" onclick="toggleSave(this, ${job.MaTin})">
-              <i class="far fa-heart"></i> Lưu tin
+            <button class="btn btn-outline ${isSaved ? 'saved' : ''}" style="width:100%;margin-top:8px;" aria-pressed="${isSaved}" onclick="toggleSave(this, ${Number(job.MaTin)})">
+              <i class="${isSaved ? 'fas' : 'far'} fa-heart"></i> <span data-save-label>${isSaved ? 'Đã lưu' : 'Lưu tin'}</span>
             </button>
           </div>
           <div class="company-box">
             <h4>Về công ty</h4>
-            <img src="${job.LinkLogo}" style="width:48px;height:48px;border-radius:8px;margin:8px 0;" alt="">
-            <p><strong>${job.TenDoanhNghiep}</strong></p>
+            <img src="${escapeHTML(job.LinkLogo)}" style="width:48px;height:48px;border-radius:8px;margin:8px 0;" alt="">
+            <p><strong>${escapeHTML(job.TenDoanhNghiep)}</strong></p>
             <a href="cong-ty.html" class="link-more">Xem trang công ty →</a>
           </div>
         </aside>
       </div>
     `;
   </script>
+  <script src="../css/js/portal.js?v=2"></script>
   <style>
     .detail-layout { display: grid; grid-template-columns: 1fr 300px; gap: 24px; }
     .detail-main { background: white; border-radius: var(--radius); border: 1px solid var(--border); padding: 24px; }

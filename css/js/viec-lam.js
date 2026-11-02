@@ -17,13 +17,36 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function applyFilter() {
-  let jobs = [...TIN_TUYEN_DUNG];
+  let jobs = getAllPortalJobs();
 
   const lvChecked = [...document.querySelectorAll('.filter-lv:checked')].map(c => +c.value);
   if (lvChecked.length) jobs = jobs.filter(j => lvChecked.includes(j.MaLinhVuc));
 
   const tinhChecked = [...document.querySelectorAll('.filter-tinh:checked')].map(c => +c.value);
   if (tinhChecked.length) jobs = jobs.filter(j => tinhChecked.includes(j.MaTinhThanh));
+
+  const company = Number(getQueryParam('company'));
+  if (company) jobs = jobs.filter(j => j.MaDoanhNghiep === company);
+
+  const keyword = (getQueryParam('q') || '').trim().toLocaleLowerCase('vi');
+  if (keyword) jobs = jobs.filter(j => [j.TieuDe, j.TenDoanhNghiep, j.TenLinhVuc, ...(j.KyNang || [])]
+    .some(value => String(value).toLocaleLowerCase('vi').includes(keyword)));
+
+  const category = getQueryParam('linhvuc');
+  if (category && !/^\d+$/.test(category)) {
+    const normalizedCategory = category.toLocaleLowerCase('vi');
+    const categoryIds = {
+      'frontend developer': 1, 'backend developer': 1, 'fullstack developer': 1,
+      'mobile developer': 2, 'ai engineer': 3, 'data analyst': 4,
+      'qa tester': 5, 'devops engineer': 6, 'cyber security': 7
+    };
+    if (categoryIds[normalizedCategory]) {
+      jobs = jobs.filter(j => j.MaLinhVuc === categoryIds[normalizedCategory]);
+    } else {
+      jobs = jobs.filter(j => [j.TieuDe, j.TenLinhVuc, ...(j.KyNang || [])]
+        .some(value => String(value).toLocaleLowerCase('vi').includes(normalizedCategory)));
+    }
+  }
 
   const htChecked = [...document.querySelectorAll('.filter-hinhthuc:checked')].map(c => c.value);
   if (htChecked.length) jobs = jobs.filter(j => htChecked.includes(j.HinhThucLamViec));

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   renderLinhVuc();
-  renderJobs(TIN_TUYEN_DUNG.slice(0, 6));
+  renderJobs(getAllPortalJobs().slice(0, 6));
   renderStats();
 });
 
@@ -35,7 +35,7 @@ document.querySelectorAll('.tab').forEach(tab => {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     const type = tab.dataset.tab;
-    let jobs = [...TIN_TUYEN_DUNG];
+    let jobs = getAllPortalJobs();
     if (type === 'moi-nhat') {
       jobs.sort((a, b) => new Date(b.NgayTao) - new Date(a.NgayTao));
     } else if (type === 'luong-cao') {
@@ -50,7 +50,7 @@ document.querySelectorAll('.filter-chips .chip').forEach(chip => {
     document.querySelectorAll('.filter-chips .chip').forEach(c => c.classList.remove('active'));
     chip.classList.add('active');
     const text = chip.textContent.trim();
-    let jobs = [...TIN_TUYEN_DUNG];
+    let jobs = getAllPortalJobs();
     if (text !== 'Tất cả') {
       if (text === 'Remote') {
         jobs = jobs.filter(j => j.HinhThucLamViec === 'TU_XA');

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quản lý CV | HUTECH Intern</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/depth-theme.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -33,7 +34,7 @@
         <h1>Quản lý CV</h1>
         <p>Bảng CV_SinhVien – tải lên hoặc tạo CV online</p>
       </div>
-      <button class="btn btn-primary"><i class="fas fa-upload"></i> Tải CV lên</button>
+      <button class="btn btn-primary" type="button"><i class="fas fa-upload"></i> Tải CV lên</button>
     </div>
   </div>
 
@@ -60,10 +61,10 @@
           <button class="btn btn-outline" style="padding:6px 12px;font-size:13px;color:var(--danger);"><i class="fas fa-trash"></i></button>
         </div>
       </div>
-      <div class="cv-card add-new" onclick="alert('Mở form tải CV')">
+      <button class="cv-card add-new" type="button">
         <i class="fas fa-plus-circle"></i>
-        <p>Thêm CV mới</p>
-      </div>
+        <span>Thêm CV mới</span>
+      </button>
     </div>
   </div>
 
@@ -97,5 +98,8 @@
     .cv-card.add-new:hover { border-color: var(--primary); color: var(--primary); }
     .cv-card.add-new i { font-size: 32px; margin-bottom: 8px; }
   </style>
+  <script src="../css/js/data.js"></script>
+  <script src="../css/js/common.js?v=2"></script>
+  <script src="../css/js/portal.js?v=2"></script>
 </body>
 </html>

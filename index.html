@@ -16,11 +16,11 @@
         <div class="brand-sub">HUTECH IT Intern</div>
       </div>
 
-      <nav class="nav-main" aria-label="Menu chính">
+      <nav class="nav-main auth-logged-in student-only-nav hidden" aria-label="Menu chính">
         <a href="pages/viec-lam.html" class="nav-item active">Việc làm <span>↓</span></a>
         <a href="pages/cv.html" class="nav-item">Tạo CV</a>
         <a href="pages/cong-ty.html" class="nav-item">Công ty</a>
-        <a href="#" class="nav-item">Cẩm nang nghề nghiệp</a>
+        <a href="pages/ho-tro.html" class="nav-item">Cẩm nang nghề nghiệp</a>
       </nav>
 
       <div class="header-right">
@@ -47,12 +47,12 @@
               <a href="pages/doanh-nghiep.html"><i class="fas fa-building"></i> Nhà tuyển dụng</a>
               <a href="pages/admin.html"><i class="fas fa-shield-alt"></i> Admin</a>
               <hr>
-              <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+              <a href="index.html" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
             </div>
           </div>
         </div>
 
-        <a href="pages/doanh-nghiep.html" class="btn-pro">HUTECH IT Pro</a>
+        <a href="pages/hutech-it-pro.html" class="btn-pro" id="vipPortalLink">HUTECH IT Pro</a>
       </div>
     </div>
   </header>
@@ -61,17 +61,27 @@
     <div class="container hero-shell">
       <div class="hero-row">
         <div class="hero-copy">
+          <span class="hero-eyebrow"><i class="fas fa-sparkles"></i> Cơ hội thực tập dành riêng cho sinh viên HUTECH</span>
           <h1>Tìm việc làm nhanh, việc làm nổi bật trên toàn quốc</h1>
           <p>Tiếp cận hơn 10.000+ tin tuyển dụng mới mỗi ngày từ các doanh nghiệp uy tín tại Việt Nam</p>
+          <div class="hero-highlights" aria-label="Điểm nổi bật">
+            <span><i class="fas fa-circle-check"></i> Tin tuyển dụng uy tín</span>
+            <span><i class="fas fa-bolt"></i> Ứng tuyển nhanh chóng</span>
+          </div>
         </div>
         <div class="hero-side">
           <div class="mini-portrait">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Nhân sự">
+            <img src="assets/it-intern-hero.png" alt="Sinh viên thực tập ngành công nghệ thông tin đang lập trình">
+          </div>
+          <div class="hero-float-card">
+            <span class="hero-float-icon"><i class="fas fa-briefcase"></i></span>
+            <span><strong>Việc tốt đang chờ</strong><small>Bắt đầu hành trình của bạn</small></span>
           </div>
         </div>
       </div>
 
       <form class="search-box" action="pages/viec-lam.html" method="get">
+        <span class="search-label">Tìm cơ hội phù hợp với bạn</span>
         <div class="search-field search-main category-picker">
           <i class="fas fa-bars"></i>
           <button type="button" class="category-trigger" id="categoryTrigger">
@@ -112,6 +122,11 @@
   <section class="section categories-section">
     <div class="container grid-2">
       <div class="category-list">
+        <div class="category-heading">
+          <span class="section-kicker">Khám phá</span>
+          <h2>Việc làm theo lĩnh vực</h2>
+          <p>Chọn hướng đi phù hợp với chuyên môn của bạn</p>
+        </div>
         <ul id="linh-vuc-list"></ul>
         <div class="pager">
           <span>1/5</span>
@@ -122,7 +137,7 @@
 
       <div class="promo-banner">
         <div class="promo-person">
-          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1000&q=80" alt="Tuyển dụng">
+          <img src="assets/it-teamwork.png" alt="Đội ngũ công nghệ cùng phối hợp tại nơi làm việc">
         </div>
         <div class="promo-content">
           <h2>Đã đến lúc nâng tầm thu nhập</h2>
@@ -138,11 +153,28 @@
     </div>
   </section>
 
+  <section class="section community-section">
+    <div class="container community-panel">
+      <div class="community-image">
+        <img src="assets/hutech-event-space.png" alt="Không gian hội thảo và kết nối nghề nghiệp">
+      </div>
+      <div class="community-copy">
+        <span class="section-kicker">Kết nối và phát triển</span>
+        <h2>Mở rộng hành trình nghề nghiệp cùng cộng đồng công nghệ</h2>
+        <p>Khám phá môi trường chuyên nghiệp, gặp gỡ doanh nghiệp và sẵn sàng cho cơ hội thực tập tiếp theo.</p>
+        <a href="pages/ho-tro.html" class="btn btn-primary">Khám phá cẩm nang</a>
+      </div>
+    </div>
+  </section>
+
   <section class="section role-portal">
     <div class="container">
       <div class="section-heading">
-        <h2>Hệ thống theo vai trò trong cơ sở dữ liệu</h2>
-        <p>Phân quyền theo mô hình: Sinh viên, Doanh nghiệp và Admin</p>
+        <div>
+          <span class="section-kicker">Một nền tảng, nhiều hành trình</span>
+          <h2>Không gian dành cho mọi vai trò</h2>
+        </div>
+        <p>Công cụ cần thiết để sinh viên, doanh nghiệp và đội ngũ quản trị kết nối hiệu quả hơn.</p>
       </div>
 
       <div class="portal-grid">
@@ -173,7 +205,10 @@
   <section class="section jobs-section">
     <div class="container">
       <div class="section-header">
-        <h2>Việc làm mới cập nhật</h2>
+        <div class="jobs-title">
+          <span class="section-kicker">Cơ hội mới mỗi ngày</span>
+          <h2>Việc làm thực tập nổi bật</h2>
+        </div>
         <div class="tabs">
           <button class="tab active" data-tab="noi-bat">Nổi bật</button>
           <button class="tab" data-tab="moi-nhat">Mới nhất</button>
@@ -195,7 +230,12 @@
   </section>
 
   <section class="section stats-section">
-    <div class="container stats-grid">
+    <div class="container">
+      <div class="stats-intro">
+        <span class="section-kicker">Cùng nhau phát triển</span>
+        <h2>Kết nối tài năng trẻ với doanh nghiệp</h2>
+      </div>
+      <div class="stats-grid">
       <div class="stat-card">
         <i class="fas fa-user-graduate"></i>
         <div>
@@ -224,6 +264,7 @@
           <span>Sinh viên đã có nơi TT</span>
         </div>
       </div>
+      </div>
     </div>
   </section>
 
@@ -249,8 +290,8 @@
         <h4>Dành cho doanh nghiệp</h4>
         <ul>
           <li><a href="pages/doanh-nghiep.html">Đăng tin tuyển dụng</a></li>
-          <li><a href="#">Tìm ứng viên</a></li>
-          <li><a href="#">Quản lý đơn</a></li>
+          <li><a href="pages/doanh-nghiep.html">Tìm ứng viên</a></li>
+          <li><a href="pages/ung-tuyen.html">Quản lý đơn</a></li>
         </ul>
       </div>
       <div>
@@ -282,12 +323,13 @@
       <div class="role-switch">
         <button class="role-option active" data-role="student">Sinh viên</button>
         <button class="role-option" data-role="employer">Nhà tuyển dụng</button>
+        <button class="role-option" data-role="vip">Khách hàng VIP</button>
         <button class="role-option" data-role="admin">Admin</button>
       </div>
 
       <form id="authForm">
         <div class="form-group hidden" id="nameGroup">
-          <label for="fullName">Họ và tên</label>
+          <label for="fullName" id="nameLabel">Họ và tên</label>
           <input id="fullName" name="name" class="form-control" placeholder="Nhập tên của bạn" />
         </div>
 
@@ -301,19 +343,39 @@
           <input id="userPassword" name="password" type="password" class="form-control" placeholder="••••••••" required />
         </div>
 
+        <div class="auth-message hidden" id="authMessage" role="status" aria-live="polite">
+          <i class="fas fa-circle-info" aria-hidden="true"></i>
+          <span id="authMessageText"></span>
+        </div>
         <button type="submit" class="btn btn-primary auth-submit" id="authSubmitBtn">Đăng nhập</button>
+        <button type="button" class="auth-mode-switch" id="authModeSwitch"></button>
+        <button type="button" class="auth-mode-switch hidden" id="resetDemoAccount">Tạo lại mật khẩu tài khoản demo</button>
       </form>
     </div>
   </div>
 
+  <div class="auth-modal hidden" id="demoAccountsModal">
+    <section class="auth-box demo-accounts-box" role="dialog" aria-modal="true" aria-labelledby="demoAccountsTitle">
+      <button class="auth-close" aria-label="Đóng" id="closeDemoAccounts"><i class="fas fa-times"></i></button>
+      <div class="auth-header">
+        <h3 id="demoAccountsTitle">Tài khoản demo đã được cấp</h3>
+        <p id="demoAccountsMessage">Ghi lại mật khẩu ngay. Mật khẩu chỉ hiển thị lần đầu và chỉ dùng trong trình duyệt này.</p>
+      </div>
+      <div id="demoCredentialList" class="demo-credential-list"></div>
+      <p class="demo-credentials-warning">Đây là tài khoản mẫu lưu cục bộ để thử nghiệm, không dùng cho môi trường thật.</p>
+      <button type="button" class="btn btn-primary auth-submit" id="closeDemoAccountsButton">Đã ghi lại</button>
+    </section>
+  </div>
+
   <script src="css/js/data.js"></script>
-  <script src="css/js/common.js"></script>
-  <script src="css/js/home.js"></script>
+  <script src="css/js/common.js?v=2"></script>
+  <script src="css/js/home.js?v=2"></script>
   <script>
     const AUTH_KEY = 'HUTECH IT_user';
     const ROLE_TEXT = {
       student: 'Sinh viên',
       employer: 'Nhà tuyển dụng',
+      vip: 'Khách hàng VIP',
       admin: 'Admin'
     };
 
@@ -321,9 +383,17 @@
     const authForm = document.getElementById('authForm');
     const authTitle = document.getElementById('authTitle');
     const authSubmitBtn = document.getElementById('authSubmitBtn');
+    const authMessage = document.getElementById('authMessage');
+    const authMessageText = document.getElementById('authMessageText');
     const nameGroup = document.getElementById('nameGroup');
+    const nameLabel = document.getElementById('nameLabel');
+    const authModeSwitch = document.getElementById('authModeSwitch');
+    const roleSwitch = document.querySelector('.role-switch');
     const roleButtons = document.querySelectorAll('.role-option');
     const userMenu = document.getElementById('userMenu');
+    let accountPortalRedirect = null;
+    const demoAccountsModal = document.getElementById('demoAccountsModal');
+    const resetDemoAccountButton = document.getElementById('resetDemoAccount');
 
     function getAuthUser() {
       try {
@@ -342,17 +412,43 @@
       renderAuthUI();
     }
 
-    function openAuthModal(mode = 'login', role = 'student') {
+    function showAuthMessage(message, type = 'error') {
+      authMessageText.textContent = message;
+      authMessage.className = `auth-message ${type}`;
+      const icon = authMessage.querySelector('i');
+      icon.className = type === 'error'
+        ? 'fas fa-circle-exclamation'
+        : type === 'success' ? 'fas fa-circle-check' : 'fas fa-circle-info';
+    }
+
+    function openAuthModal(mode = 'login', role = 'student', options = {}) {
       authModal.classList.remove('hidden');
       const isRegister = mode === 'register';
       authTitle.textContent = isRegister ? 'Đăng ký tài khoản' : 'Đăng nhập';
       authSubmitBtn.textContent = isRegister ? 'Đăng ký' : 'Đăng nhập';
       nameGroup.classList.toggle('hidden', !isRegister);
+      roleSwitch.classList.toggle('hidden', Boolean(options.portalRole));
       roleButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.role === role));
       authForm.dataset.mode = mode;
       authForm.dataset.role = role;
+      authForm.dataset.accountPortal = options.portalRole || '';
+      accountPortalRedirect = options.redirectTo || null;
       const nameInput = document.getElementById('fullName');
+      if (nameInput) nameInput.required = isRegister;
+      nameLabel.textContent = role === 'employer' ? 'Tên công ty' : 'Họ và tên';
+      if (nameInput) nameInput.placeholder = role === 'employer' ? 'Nhập tên công ty' : 'Nhập tên của bạn';
       if (nameInput && !isRegister) nameInput.value = '';
+      authModeSwitch.classList.toggle('hidden', role === 'employer' || role === 'admin');
+      resetDemoAccountButton.classList.toggle('hidden', !hasDemoAccount(role));
+      authModeSwitch.textContent = isRegister
+        ? 'Đã có tài khoản? Đăng nhập'
+        : role === 'vip' ? 'Chưa có tài khoản VIP? Đăng ký'
+          : role === 'employer' ? 'Chưa có tài khoản công ty? Đăng ký' : 'Chưa có tài khoản? Đăng ký';
+      if (role === 'employer' || role === 'admin') {
+        showAuthMessage(`Tài khoản ${ROLE_TEXT[role].toLowerCase()} được cấp riêng. Vui lòng đăng nhập bằng email và mật khẩu đã được cấp.`, 'info');
+      } else {
+        authMessage.classList.add('hidden');
+      }
     }
 
     function closeAuthModal() {
@@ -379,11 +475,36 @@
         loggedInEls.forEach(el => el.classList.add('hidden'));
         loggedOutEls.forEach(el => el.classList.remove('hidden'));
       }
+      document.querySelectorAll('.student-only-nav').forEach(el => {
+        el.classList.toggle('hidden', user?.role !== 'student');
+      });
     }
 
     document.querySelectorAll('[data-auth]').forEach((btn) => {
       btn.addEventListener('click', () => {
         openAuthModal(btn.dataset.auth, document.querySelector('.role-option.active')?.dataset.role || 'student');
+      });
+    });
+
+    document.getElementById('vipPortalLink').addEventListener('click', (event) => {
+      event.preventDefault();
+      const user = getAuthUser();
+      if (user?.role === 'vip') {
+        window.location.href = event.currentTarget.href;
+        return;
+      }
+      openAuthModal('login', 'vip', {
+        portalRole: 'vip',
+        redirectTo: 'pages/hutech-it-pro.html'
+      });
+    });
+
+    authModeSwitch.addEventListener('click', () => {
+      const portalRole = authForm.dataset.accountPortal || '';
+      const role = authForm.dataset.role || 'student';
+      openAuthModal(authForm.dataset.mode === 'register' ? 'login' : 'register', role, {
+        portalRole,
+        redirectTo: accountPortalRedirect
       });
     });
 
@@ -405,8 +526,15 @@
 
     roleButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        roleButtons.forEach(btn => btn.classList.toggle('active', btn === button));
-        authForm.dataset.role = button.dataset.role;
+        const role = button.dataset.role;
+        const mode = (role === 'employer' || role === 'admin')
+          ? 'login'
+          : authForm.dataset.mode || 'login';
+        const portalRole = authForm.dataset.accountPortal;
+        openAuthModal(mode, role, {
+          portalRole: portalRole || undefined,
+          redirectTo: accountPortalRedirect || undefined
+        });
       });
     });
 
@@ -415,32 +543,161 @@
       if (event.target === authModal) closeAuthModal();
     });
 
-    authForm.addEventListener('submit', (event) => {
+    async function hashPassword(password) {
+      const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(password));
+      return [...new Uint8Array(bytes)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+    }
+
+    function createDemoPassword() {
+      return [...crypto.getRandomValues(new Uint8Array(16))]
+        .map(byte => byte.toString(16).padStart(2, '0'))
+        .join('');
+    }
+
+    function displayDemoCredentials(accounts, reset = false) {
+      document.getElementById('demoAccountsTitle').textContent = reset
+        ? 'Mật khẩu demo đã được tạo lại'
+        : 'Tài khoản demo đã được cấp';
+      document.getElementById('demoAccountsMessage').textContent = reset
+        ? 'Hãy lưu mật khẩu mới ngay. Mật khẩu cũ đã bị vô hiệu hóa.'
+        : 'Ghi lại mật khẩu ngay. Mật khẩu chỉ hiển thị lần đầu và chỉ dùng trong trình duyệt này.';
+      const credentialList = document.getElementById('demoCredentialList');
+      credentialList.replaceChildren();
+      accounts.forEach(account => {
+        const card = document.createElement('section');
+        card.className = 'demo-credential-card';
+        const title = document.createElement('h4');
+        title.textContent = ROLE_TEXT[account.role];
+        const email = document.createElement('p');
+        email.innerHTML = 'Email: <code></code>';
+        email.querySelector('code').textContent = account.email;
+        const password = document.createElement('p');
+        password.innerHTML = 'Mật khẩu: <code></code>';
+        password.querySelector('code').textContent = account.password;
+        card.append(title, email, password);
+        credentialList.append(card);
+      });
+      demoAccountsModal.classList.remove('hidden');
+    }
+
+    function hasDemoAccount(role) {
+      const accounts = readPortalValue(PORTAL_KEYS.users, []);
+      return Array.isArray(accounts) && accounts.some(account =>
+        account.role === role && typeof account.email === 'string'
+        && account.email.endsWith('@hutech-demo.local'));
+    }
+
+    async function resetDemoAccountPassword() {
+      const role = authForm.dataset.role;
+      const accounts = readPortalValue(PORTAL_KEYS.users, []);
+      if (!Array.isArray(accounts)) {
+        showAuthMessage('Không thể đọc dữ liệu tài khoản demo. Vui lòng tải lại trang hoặc kiểm tra dữ liệu lưu.', 'error');
+        return;
+      }
+      const account = accounts.find(item =>
+        item.role === role && typeof item.email === 'string'
+        && item.email.endsWith('@hutech-demo.local'));
+      if (!account) {
+        showAuthMessage('Không tìm thấy tài khoản demo để đặt lại mật khẩu.', 'error');
+        return;
+      }
+      const password = createDemoPassword();
+      account.passwordHash = await hashPassword(password);
+      writePortalValue(PORTAL_KEYS.users, accounts);
+      displayDemoCredentials([{ ...account, password }], true);
+    }
+
+    resetDemoAccountButton.addEventListener('click', () => {
+      resetDemoAccountPassword().catch(error => {
+        console.error('Không thể đặt lại mật khẩu tài khoản demo.', error);
+        showAuthMessage('Không thể đặt lại mật khẩu tài khoản demo. Vui lòng thử lại.', 'error');
+      });
+    });
+
+    async function initializeDemoAccounts() {
+      const accounts = readPortalValue(PORTAL_KEYS.users, []);
+      if (!Array.isArray(accounts)) {
+        throw new Error('Dữ liệu tài khoản không hợp lệ.');
+      }
+
+      const credentials = [];
+      for (const role of ['employer', 'admin']) {
+        if (accounts.some(account => account.role === role)) continue;
+        const baseEmail = `${role}@hutech-demo.local`;
+        let email = baseEmail;
+        let suffix = 2;
+        while (accounts.some(account => account.email === email)) {
+          email = `${role}${suffix}@hutech-demo.local`;
+          suffix += 1;
+        }
+        const password = createDemoPassword();
+        const account = {
+          name: ROLE_TEXT[role],
+          email,
+          role,
+          passwordHash: await hashPassword(password)
+        };
+        accounts.push(account);
+        credentials.push({ ...account, password });
+      }
+
+      if (credentials.length) {
+        writePortalValue(PORTAL_KEYS.users, accounts);
+        displayDemoCredentials(credentials);
+      }
+    }
+
+    function closeDemoCredentials() {
+      demoAccountsModal.classList.add('hidden');
+    }
+
+    document.getElementById('closeDemoAccounts').addEventListener('click', closeDemoCredentials);
+    document.getElementById('closeDemoAccountsButton').addEventListener('click', closeDemoCredentials);
+    demoAccountsModal.addEventListener('click', event => {
+      if (event.target === demoAccountsModal) closeDemoCredentials();
+    });
+
+    authForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const formData = new FormData(authForm);
       const mode = authForm.dataset.mode || 'login';
       const role = authForm.dataset.role || 'student';
+      const accountPortal = authForm.dataset.accountPortal || '';
       const payload = {
         name: formData.get('name') || ROLE_TEXT[role],
-        email: formData.get('email'),
-        password: formData.get('password'),
+        email: String(formData.get('email')).trim().toLowerCase(),
         role
       };
+      const passwordHash = await hashPassword(formData.get('password'));
+      const accounts = readPortalValue(PORTAL_KEYS.users, []);
 
       if (mode === 'register') {
+        if (role === 'admin' || role === 'employer') {
+          showAuthMessage('Tài khoản nhà tuyển dụng và quản trị được cấp riêng. Vui lòng đăng nhập.');
+          return;
+        }
+        if (accounts.some(account => account.email === payload.email)) {
+          showAuthMessage('Email này đã được đăng ký. Hãy đăng nhập hoặc dùng email khác.');
+          return;
+        }
+        writePortalValue(PORTAL_KEYS.users, [...accounts, { ...payload, passwordHash }]);
         saveAuthUser(payload);
         renderAuthUI();
         closeAuthModal();
+        if (accountPortal && accountPortalRedirect) {
+          window.location.href = accountPortalRedirect;
+        }
       } else {
-        const saved = getAuthUser();
-        if (saved) {
-          saveAuthUser({ ...saved, role });
-          renderAuthUI();
-          closeAuthModal();
-        } else {
-          saveAuthUser(payload);
-          renderAuthUI();
-          closeAuthModal();
+        const account = accounts.find(item => item.email === payload.email && item.passwordHash === passwordHash && item.role === role);
+        if (!account) {
+          showAuthMessage('Email, mật khẩu hoặc vai trò không chính xác. Vui lòng kiểm tra lại thông tin đăng nhập.');
+          return;
+        }
+        saveAuthUser({ name: account.name, email: account.email, role: account.role });
+        renderAuthUI();
+        closeAuthModal();
+        if (accountPortal && accountPortalRedirect) {
+          window.location.href = accountPortalRedirect;
         }
       }
     });
@@ -463,6 +720,10 @@
         option.classList.toggle('active', option.dataset.value === safeValue);
       });
     }
+
+    authForm.addEventListener('input', () => {
+      authMessage.classList.add('hidden');
+    });
 
     categoryTrigger?.addEventListener('click', (event) => {
       event.stopPropagation();
@@ -492,6 +753,36 @@
 
     applyCategory('Tất cả');
     renderAuthUI();
+
+    initializeDemoAccounts().catch(error => {
+      console.error('Không thể khởi tạo tài khoản demo.', error);
+      openAuthModal('login', 'student');
+      showAuthMessage('Không thể khởi tạo tài khoản demo. Vui lòng kiểm tra dữ liệu lưu trong trình duyệt.', 'error');
+    });
+
+    const portalParams = new URLSearchParams(window.location.search);
+    const portalRole = portalParams.get('portal');
+    if (portalRole === 'employer' || portalRole === 'vip' || portalRole === 'admin') {
+      const allowedNextPages = {
+        employer: new Set(['doanh-nghiep.html', 'dang-tin.html']),
+        vip: new Set(['hutech-it-pro.html']),
+        admin: new Set(['admin.html'])
+      }[portalRole];
+      const requestedPage = portalParams.get('next');
+      const nextPage = allowedNextPages.has(requestedPage)
+        ? requestedPage
+        : portalRole === 'vip' ? 'hutech-it-pro.html'
+          : portalRole === 'admin' ? 'admin.html' : 'doanh-nghiep.html';
+      const currentUser = getAuthUser();
+      if (currentUser?.role === portalRole) {
+        window.location.replace(`pages/${nextPage}`);
+      } else {
+        openAuthModal('login', portalRole, {
+          portalRole,
+          redirectTo: `pages/${nextPage}`
+        });
+      }
+    }
   </script>
 </body>
 </html>

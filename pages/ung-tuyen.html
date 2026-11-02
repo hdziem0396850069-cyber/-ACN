@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Đơn ứng tuyển | HUTECH Intern</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/depth-theme.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -45,6 +46,7 @@
       <button class="tab" data-status="PHONG_VAN">Phỏng vấn</button>
       <button class="tab" data-status="DAT">Đạt</button>
       <button class="tab" data-status="KHONG_DAT">Không đạt</button>
+      <button class="tab" data-status="DA_RUT">Đã rút</button>
     </div>
     <div class="don-list" id="don-list"></div>
   </div>
@@ -54,41 +56,8 @@
   </footer>
 
   <script src="../css/js/data.js"></script>
-  <script src="../css/js/common.js"></script>
-  <script>
-    function renderDons(status = 'ALL') {
-      let dons = [...DON_UNG_TUYEN];
-      if (status !== 'ALL') dons = dons.filter(d => d.TrangThai === status);
-
-      const html = dons.length ? dons.map(d => `
-        <div class="don-card">
-          <div class="don-left">
-            <h3>${d.TieuDe}</h3>
-            <p class="company"><i class="fas fa-building"></i> ${d.TenDoanhNghiep}</p>
-            <p class="time"><i class="far fa-clock"></i> Nộp ngày ${formatDate(d.NgayNop)}</p>
-          </div>
-          <div class="don-right">
-            ${renderStatusBadge(d.TrangThai)}
-            ${d.Diem != null ? `<span class="diem">Điểm: ${d.Diem}/100</span>` : ''}
-            <a href="#" class="btn btn-outline" style="padding:6px 12px;font-size:13px;">Chi tiết</a>
-          </div>
-        </div>
-      `).join('') : '<div class="empty-state"><i class="fas fa-inbox"></i><h3>Chưa có đơn nào</h3></div>';
-
-      document.getElementById('don-list').innerHTML = html;
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      renderDons();
-      document.querySelectorAll('.tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-          document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          renderDons(tab.dataset.status);
-        });
-      });
-    });
-  </script>
+  <script src="../css/js/common.js?v=2"></script>
+  <script src="../css/js/portal.js?v=2"></script>
   <style>
     .don-list { display: flex; flex-direction: column; gap: 12px; }
     .don-card {
